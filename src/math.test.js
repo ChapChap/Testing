@@ -71,3 +71,12 @@ describe('fizzBuzz', function() {
     expect(Util.fizzBuzz(-1)).toEqual([]);
   });
 });
+
+describe('cipher', function() {
+  test('A to a', () => {
+    expect(Util.cipher('A')).toEqual('B');
+  });
+  test('"Test Unitaire" => "Uftu Vojubjsf"', () => {
+    expect(Util.cipher('Test Unitaire')).toEqual('Uftu Vojubjsf');
+  });
+});
