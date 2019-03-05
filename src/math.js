@@ -97,11 +97,22 @@ Util.fizzBuzz = function(n) {
  * Chiffre une phrase selon la règle suivante : Les A deviennent des B, les B des C, etc.
  *
  * Exp :
- * Util.cipher("Test Unitaire") => "Uftu Tojubjsf"
+ * Util.cipher("Test Unitaire") => "Uftu Vojubjsf"
  *
  * @param phrase
  * @returns {string}
  */
-Util.cipher = function(phrase) {};
+Util.cipher = function(phrase) {
+  var result = '';
+  var charcode = 0;
+  for (var i = 0; i < phrase.length; i++) {
+    if (phrase[i] == ' ') result += ' ';
+    else {
+      charcode = phrase[i].charCodeAt() + 1;
+      result += String.fromCharCode(charcode);
+    }
+  }
+  return result;
+};
 
 module.exports = Util;
