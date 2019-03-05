@@ -69,3 +69,45 @@ describe('includes', function() {
     expect(regular.includes(limitb)).toBe(false);
   });
 });
+
+describe('union', function() {
+  test('Union regular & smaller = regular', () => {
+    expect(regular.union(smaller).toString()).toEqual(regular.toString());
+  });
+  test('Union regular & bigger = bigger', () => {
+    expect(regular.union(bigger).toString()).toEqual(bigger.toString());
+  });
+  test('Union regular & regular = regular', () => {
+    expect(regular.union(regular).toString()).toEqual(regular.toString());
+  });
+  test('Union regular & neigha = [Interval(neigha.start,regular.end)]', () => {
+    expect(regular.union(neigha).toString()).toEqual(
+      new Interval(neigha.start, regular.end).toString()
+    );
+  });
+  test('Union regular & neighb = [Interval(regular.start,neighb.end)]', () => {
+    expect(regular.union(neighb).toString()).toEqual(
+      new Interval(regular.start, neighb.end).toString()
+    );
+  });
+  test('Union regular & limita = [Interval(limita.start,regular.end)]', () => {
+    expect(regular.union(limita).toString()).toEqual(
+      new Interval(limita.start, regular.end).toString()
+    );
+  });
+  test('Union regular & limitb = [Interval(regular.start,limitb.end)]', () => {
+    expect(regular.union(limitb).toString()).toEqual(
+      new Interval(regular.start, limitb.end).toString()
+    );
+  });
+  test('Union regular & ahead = [ahead,regular]', () => {
+    expect(regular.union(ahead).toString()).toEqual(
+      [ahead, regular].toString()
+    );
+  });
+  test('Union regular & behind = [regular,behind]', () => {
+    expect(regular.union(behind).toString()).toEqual(
+      [regular, behind].toString()
+    );
+  });
+});
