@@ -102,10 +102,9 @@ class Interval {
       if (this.includes(interval)) return interval;
       else if (interval.includes(this)) return this;
       else {
-        let res = new Interval();
-        res.start = this.start > interval.start ? this.start : interval.start;
-        res.end = this.end < interval.end ? this.end : interval.end;
-        return res;
+        let start = this.start > interval.start ? this.start : interval.start;
+        let end = this.end < interval.end ? this.end : interval.end;
+        return new Interval(start, end);
       }
     }
     return null;
