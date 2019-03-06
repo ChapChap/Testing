@@ -97,7 +97,19 @@ class Interval {
    * @param {Interval} interval
    * @returns {Interval|null}
    */
-  intersection(interval) {}
+  intersection(interval) {
+    if (this.overlaps(interval)) {
+      if (this.includes(interval)) return interval;
+      else if (interval.includes(this)) return this;
+      else {
+        let res = new Interval();
+        res.start = this.start > interval.start ? this.start : interval.start;
+        res.end = this.end < interval.end ? this.end : interval.end;
+        return res;
+      }
+    }
+    return null;
+  }
 
   /**
    * Retourne l'exclusion de deux intervals

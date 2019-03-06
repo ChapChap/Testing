@@ -111,3 +111,41 @@ describe('union', function() {
     );
   });
 });
+
+describe('intersection', function() {
+  test('Union regular & limita = [Interval(limita.start,regular.end)]', () => {
+    expect(regular.intersection(limita)).toBeNull;
+  });
+  test('Union regular & limitb = [Interval(regular.start,limitb.end)]', () => {
+    expect(regular.intersection(limitb)).toBeNull;
+  });
+  test('Union regular & ahead = [ahead,regular]', () => {
+    expect(regular.intersection(ahead)).toBeNull;
+  });
+  test('Union regular & behind = [regular,behind]', () => {
+    expect(regular.intersection(behind)).toBeNull;
+  });
+  test('Union regular & smaller = regular', () => {
+    expect(regular.intersection(smaller).toString()).toEqual(
+      smaller.toString()
+    );
+  });
+  test('Union regular & bigger = bigger', () => {
+    expect(regular.intersection(bigger).toString()).toEqual(regular.toString());
+  });
+  test('Union regular & regular = regular', () => {
+    expect(regular.intersection(regular).toString()).toEqual(
+      regular.toString()
+    );
+  });
+  test('Union regular & neigha = [Interval(neigha.start,regular.end)]', () => {
+    expect(regular.intersection(neigha).toString()).toEqual(
+      new Interval(regular.start, neigha.end).toString()
+    );
+  });
+  test('Union regular & neighb = [Interval(regular.start,neighb.end)]', () => {
+    expect(regular.intersection(neighb).toString()).toEqual(
+      new Interval(neighb.start, regular.end).toString()
+    );
+  });
+});
