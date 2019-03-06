@@ -113,37 +113,37 @@ describe('union', function() {
 });
 
 describe('intersection', function() {
-  test('Union regular & limita = [Interval(limita.start,regular.end)]', () => {
+  test('Intersection between regular and start limit interval must be null', () => {
     expect(regular.intersection(limita)).toBeNull;
   });
-  test('Union regular & limitb = [Interval(regular.start,limitb.end)]', () => {
+  test('Intersection between regular and end limit interval must be null', () => {
     expect(regular.intersection(limitb)).toBeNull;
   });
-  test('Union regular & ahead = [ahead,regular]', () => {
+  test('Intersection between regular and ahead interval must be null', () => {
     expect(regular.intersection(ahead)).toBeNull;
   });
-  test('Union regular & behind = [regular,behind]', () => {
+  test('Intersection between regular and behind interval must be null', () => {
     expect(regular.intersection(behind)).toBeNull;
   });
-  test('Union regular & smaller = regular', () => {
+  test('Intersection regular & smaller = smaller', () => {
     expect(regular.intersection(smaller).toString()).toEqual(
       smaller.toString()
     );
   });
-  test('Union regular & bigger = bigger', () => {
+  test('Intersection regular & bigger = regular', () => {
     expect(regular.intersection(bigger).toString()).toEqual(regular.toString());
   });
-  test('Union regular & regular = regular', () => {
+  test('Intersection regular & regular = regular', () => {
     expect(regular.intersection(regular).toString()).toEqual(
       regular.toString()
     );
   });
-  test('Union regular & neigha = [Interval(neigha.start,regular.end)]', () => {
+  test('Intersection regular & "start" overlaping interval = Interval(regular.start, neigha.end)', () => {
     expect(regular.intersection(neigha).toString()).toEqual(
       new Interval(regular.start, neigha.end).toString()
     );
   });
-  test('Union regular & neighb = [Interval(regular.start,neighb.end)]', () => {
+  test('Intersection regular & "end" overlaping interval = Interval(neighb.start, regular.end)', () => {
     expect(regular.intersection(neighb).toString()).toEqual(
       new Interval(neighb.start, regular.end).toString()
     );
