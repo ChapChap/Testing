@@ -126,7 +126,19 @@ class Interval {
    * @param {Interval} interval
    * @returns {Interval[]}
    */
-  exclusion(interval) {}
+  exclusion(interval) {
+    let res = [];
+    if (this === interval) return [];
+    else {
+      let arr = [this.start, this.end, interval.start, interval.end];
+      arr.sort(function(a, b) {
+        return a - b;
+      });
+      res.push(new Interval(arr[0], arr[1]));
+      res.push(new Interval(arr[2], arr[3]));
+    }
+    return res;
+  }
 }
 
 module.exports = Interval;

@@ -149,3 +149,45 @@ describe('intersection', function() {
     );
   });
 });
+
+describe('exclusion', function() {
+  test('Exclusion regular & regular = regular', () => {
+    expect(regular.exclusion(regular)).toEqual([]);
+  });
+  test('Exclusion between regular and ahead interval must be [ahead,regular]', () => {
+    expect(regular.exclusion(ahead)).toEqual([ahead, regular]);
+  });
+  test('Exclusion between regular and behind interval must be [regular,behind]', () => {
+    expect(regular.exclusion(behind)).toEqual([regular, behind]);
+  });
+  test('Exclusion between regular and start limit interval must be [limita, regular]', () => {
+    expect(regular.exclusion(limita)).toEqual([limita, regular]);
+  });
+  test('Exclusion between regular and end limit interval must be [regular, limitb]', () => {
+    expect(regular.exclusion(limitb)).toEqual([regular, limitb]);
+  });
+  test('Exclusion regular & "start" overlaping interval = [[4,5],[7,10]]', () => {
+    expect(regular.exclusion(neigha)).toEqual([
+      new Interval(neigha.start, regular.start),
+      new Interval(neigha.end, regular.end)
+    ]);
+  });
+  test('Exclusion regular & "end" overlaping interval = [[5,7],[10,11]]', () => {
+    expect(regular.exclusion(neighb)).toEqual([
+      new Interval(regular.start, neighb.start),
+      new Interval(regular.end, neighb.end)
+    ]);
+  });
+  test('Exclusion regular & smaller = [[5,6],[9,10]]', () => {
+    expect(regular.exclusion(smaller)).toEqual([
+      new Interval(regular.start, smaller.start),
+      new Interval(smaller.end, regular.end)
+    ]);
+  });
+  test('Exclusion regular & bigger = [[3,5],[10,12]]', () => {
+    expect(regular.exclusion(bigger)).toEqual([
+      new Interval(bigger.start, regular.start),
+      new Interval(regular.end, bigger.end)
+    ]);
+  });
+});
