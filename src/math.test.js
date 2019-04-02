@@ -13,6 +13,18 @@ describe('Factorial', function() {
       Util.factorial(-10);
     }).toThrow();
   });
+
+  test('Factorial of NaN', () => {
+    expect(() => {
+      Util.factorial('TOTO');
+    }).toThrow();
+  });
+
+  test('Factorial of > 100', () => {
+    expect(() => {
+      Util.factorial(101);
+    }).toThrow();
+  });
 });
 
 describe('isPrime', function() {
