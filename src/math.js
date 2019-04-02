@@ -4,7 +4,11 @@ Util.factorial = n => {
     throw 'Unable to compute factorial for n < 0';
   }
 
-  if (!(typeof n === 'number') || Math.floor(n) !== n) {
+  if (!(typeof n === 'number')) {
+    throw 'Unable to compute factorial of non number values';
+  }
+
+  if (Math.floor(n) !== n) {
     throw 'Unable to compute factorial of non integer values';
   }
 
