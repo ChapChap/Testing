@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/Kirouane/test-tp#readme",
   "devDependencies": {
+    "@stryker-mutator/core": "^1.1.1",
+    "@stryker-mutator/html-reporter": "^1.1.1",
+    "@stryker-mutator/javascript-mutator": "^1.1.1",
+    "@stryker-mutator/jest-runner": "^1.1.1",
+    "@stryker-mutator/vue-mutator": "^1.1.1",
     "eslint": "^5.15.1",
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "^24.1.0",
