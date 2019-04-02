@@ -11,19 +11,25 @@ describe('Factorial', function() {
   test('Factorial of negative integers throws exception', () => {
     expect(() => {
       Util.factorial(-10);
-    }).toThrow();
+    }).toThrow('Unable to compute factorial for n < 0');
   });
 
   test('Factorial of NaN', () => {
     expect(() => {
       Util.factorial('TOTO');
-    }).toThrow();
+    }).toThrow('Unable to compute factorial of non number values');
+  });
+
+  test('Factorial of float number throws exception', () => {
+    expect(() => {
+      Util.factorial(8.9);
+    }).toThrow('Unable to compute factorial of non integer values');
   });
 
   test('Factorial of > 100', () => {
     expect(() => {
       Util.factorial(101);
-    }).toThrow();
+    }).toThrow('Unable to compute factorial for n > 100');
   });
 });
 
@@ -52,7 +58,7 @@ describe('sumPrime', function() {
   test('Sum of prime numbers between 0 and negative numbers throws exception', () => {
     expect(() => {
       Util.sumPrime(-1);
-    }).toThrow();
+    }).toThrow('Unable to compute sum of prime numbers for n < 0');
   });
 });
 
@@ -78,6 +84,9 @@ describe('fizzBuzz', function() {
   });
   test('Fizzbuzz of 0 must be []', () => {
     expect(Util.fizzBuzz(0)).toEqual([]);
+  });
+  test('Fizzbuzz of 1 must be [1]', () => {
+    expect(Util.fizzBuzz(1)).toEqual([1]);
   });
   test('Fizzbuzz of -2 must be []', () => {
     expect(Util.fizzBuzz(-1)).toEqual([]);

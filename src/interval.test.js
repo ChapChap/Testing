@@ -10,6 +10,12 @@ const smaller = new Interval(6, 9);
 const limita = new Interval(1, 5);
 const limitb = new Interval(10, 15);
 
+describe('tostring', function() {
+  test('toString test', () => {
+    expect(regular.toString()).toEqual('[5,10]');
+  });
+});
+
 describe('overlaps', function() {
   test('Overlap NOK ahead', () => {
     expect(regular.overlaps(ahead)).toBe(false);
