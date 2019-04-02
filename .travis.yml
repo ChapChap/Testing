@@ -5,5 +5,6 @@ node_js:
 # before_install:
 #   - npm install
 
-# script:
-#   - npm run test
+script:
+  - node node_modules/.bin/jest --coverage
+  # - npm run test
