@@ -5,6 +5,7 @@ node_js:
 before_install:
   - npm install
   - npm install -g codecov
+  - npm install -g stryker-cli
 
 # script:
 #   - node node_modules/.bin/jest --coverage
@@ -12,3 +13,4 @@ before_install:
 
 after_success:
   - codecov
+  - stryker run
