@@ -2,8 +2,13 @@ language: node_js
 node_js:
   - "10"
 
-# before_install:
-#   - npm install
+before_install:
+  - npm install
+  - npm install -g codecov
 
 # script:
-#   - npm run test
+#   - node node_modules/.bin/jest --coverage
+  # - npm run test
+
+after_success:
+  - codecov

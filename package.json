@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,16 @@
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "^24.1.0",
     "prettier": "^1.16.4"
+  },
+  "jest": {
+    "verbose": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 40,
+        "lines": 100,
+        "statements": -10
+      }
+    }
   }
 }
