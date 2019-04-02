@@ -41,5 +41,8 @@
         "statements": -10
       }
     }
+  },
+  "dependencies": {
+    "lowdb": "^1.0.0"
   }
 }

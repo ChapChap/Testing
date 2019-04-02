@@ -16,7 +16,9 @@ class BookRepository {
   /**
    * Nombre total de livre
    */
-  getTotalCount() {}
+  getTotalCount() {
+    console.log(this.db.get('books').size());
+  }
 
   /**
    * Somme du prix de tous les livre

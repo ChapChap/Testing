@@ -17,3 +17,19 @@ describe('Book repository Save', function() {
     expect(dbMock.write.mock.calls.length).toBe(1);
   });
 });
+
+describe('Book repository Get Total count', function() {
+  test('Count total', () => {
+    let dbMock = {
+      get: jest.fn(),
+      size: jest.fn()
+    };
+
+    dbMock.get.mockReturnValue({
+      size: jest.fn()
+    });
+
+    const repository = new BookRepository(dbMock);
+    repository.getTotalCount();
+  });
+});
